@@ -1,0 +1,28 @@
+body{
+    background-color: #d9d9d9;
+}
+
+h1,h2,h3,h4{
+    text-align: center;
+    font-family: calibri;
+}
+
+.name, .group{
+    font-family: monospace;
+    list-style: none;
+    text-align: left;
+    
+}
+
+.intro, p{
+    font-family: georgia;
+}
+
+.image{
+    text-align: center;
+}
+
+.new{
+    text-align: left;
+    font-family: georgia;
+}

@@ -1,0 +1,103 @@
++____________________________________________________+
+|                                                    |
+| Logic In Computer Science (CS F214) - Assignment I |
+|                                                    |
+| #PREFIX, INFIX AND PARSE TREE IMPLEMENTATION IN C  |
+|                                                    |
+| * Group Members -> Ankit Anand   (2015A7PS145H)    |
+|                 -> Bhavesh Gawri (2015A7PS116H)    |
+|                 -> Tilak Mundra  (2015A7PS121H)    |
+|                                                    |
++____________________________________________________+
+
+    
+/*
+The basic structure used for the representation of a vertex of parse Tree.
+*/
+
+typedef struct vertex
+{
+    char data;
+    struct vertex* left;
+    struct vertex* right;
+    struct vertex* parent;
+}vertex;
+
+void strrev(char str[]);
+
+/*
+ * Takes in a pointer to a character array (namely, string) as input.
+ * Reverses the string in linear time. 
+ */
+
+int isLowerPrecedence(char a, char b);
+
+/*
+ * Takes in 2 character type parameters among {'(', ')', '~', '+', '*', '>'}.
+ * Returns 1 if first parameter has a lower precedence than the second one.
+ */
+ 
+ int isOperator(char ele);
+ /*
+  * Takes in a character as input.
+  * Returns 1 if input is among the operators : '~', '+', '*' and '>'.
+  * Otherwise returns 0.
+  */
+  
+ int isOperand(char ele);
+ /*
+  * Takes in a character as input.
+  * Returns 1 if input is not '(' or ')' and also not an operator.
+  * Otherwise returns 0.
+  */
+ 
+ void infixToPrefix(char phi_infix[]);
+ /*
+  * Takes in a string (pointer to character array) as a parameter - formula in infix form
+  * String is assumed to be a well formed and parathesized propositional logic formula in infix notation.
+  * Converts the infix notation to prefix notation. 
+  */
+  
+ void prefixToParsetree(char phi_prefix[]);
+ /*
+  * Takes in propositional logic formula in prefix form.
+  * Constructs a parse Tree using structure of vertex as previously defined.
+  */
+ 
+ void parseTreeToInfix(vertex* node);
+ /* 
+  * Takes in pointer to the root of the parse Tree.
+  * Recursively computes fully parenthesized infix notation using inorder traversal of binary tree.
+  */
+ 
+ int computeHeight(vertex* node);
+ /*
+  * Takes in pointer to the root of the parse Tree.
+  * Recursively computes the height of subtrees and then returns it.
+  */
+  
+ void inputTruthValue();
+ /*
+  * Function to take input the truth values of propositional atoms.
+  * Stores the truth value in an array which can then be accessed.
+  */
+
+ int computeTruthValue(vertex* node);
+ /*
+  * Takes in pointer to the root of the parse Tree.
+  * Computes truth value using the following: 
+    Truth value of node = (Truth value of left child node) Operator (Truth value of right child node) 
+  * Compututation is done recursilvely in bottom up fashion.
+  */
+
+ void freeMemory(vertex *node); 
+ /*
+  * Takes in the pointer to parse Tree.
+  * Frees the memory allocated using malloc for the parse Tree recursively.
+  */
+
+
+ANALYSIS OF THE CODE : 
+
+
+
