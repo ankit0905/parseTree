@@ -29,96 +29,138 @@
         </pre>
         -->
         
-        <h1><u>Logic In Computer Science (CS F214) - Assignment I</u></h1>
-        <h2>Prefix, Infix and Parse Tree Implementation in C</h2>
+        <h1><u>Logic In Computer Science (CS F214) - Assignment I and II</u></h1>
+        <h2>Prefix, Infix, Parse Tree and CNF Implementation in C</h2>
         
         
-        <p class="intro">The project comprises of various steps - including converting infix notation to prefix, to parse tree, then back again to infix, computing height of parse tree and finally computing the truth value of the formula using given truth values of propositional atoms.</p>
+        <p class="intro">The project comprises of various steps - including converting infix notation to prefix, to parse tree, then back again to infix, computing height of parse tree and finally computing the truth value of the formula using given truth values of propositional atoms.
+        </p>
+        <p class="intro">This also includes converting the logic formula into Conjunctive Normal Form(CNF) using series of functions and then checking the validity of the formula.</p>
         
-        <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #408080; font-style: italic">/*</span>
+        <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #408080; font-style: italic">/*</span>
 <span style="color: #408080; font-style: italic">The basic structure used for the representation of a vertex of parse Tree.</span>
 <span style="color: #408080; font-style: italic">*/</span>
 
@@ -202,8 +244,49 @@
 <span style="color: #408080; font-style: italic">  * Takes in the pointer to parse Tree.</span>
 <span style="color: #408080; font-style: italic">  * Frees the memory allocated using malloc for the parse Tree recursively.</span>
 <span style="color: #408080; font-style: italic">  */</span>
+    
+<span style="color: #B00040">void</span> <span style="color: #0000FF">impl_free</span>(vertex<span style="color: #666666">*</span> node);
+<span style="color: #408080; font-style: italic">/*Function to compute a formula which is without implication and is equivalent to phi*/</span>
+
+<span style="color: #B00040">void</span> <span style="color: #0000FF">neg_at_left</span>(vertex <span style="color: #666666">*</span>ptr);
+<span style="color: #408080; font-style: italic">/*Function which adds a node to the left child of the given node and contains &#39;~&#39; as its data element</span>
+<span style="color: #408080; font-style: italic"> */</span>
+
+<span style="color: #B00040">void</span> <span style="color: #0000FF">neg_at_right</span>(vertex <span style="color: #666666">*</span>ptr);
+<span style="color: #408080; font-style: italic">/*Function which adds a node to the right child of the given node and contains &#39;~&#39; as its data element</span>
+<span style="color: #408080; font-style: italic"> */</span>
+
+<span style="color: #B00040">void</span> <span style="color: #0000FF">nnf</span>(vertex<span style="color: #666666">*</span> node);
+<span style="color: #408080; font-style: italic">/* Function to compute a formula which only negates atoms - called as Negation Normal Form    </span>
+<span style="color: #408080; font-style: italic">    *pre-condition: phi is implication free</span>
+<span style="color: #408080; font-style: italic">    *post-condition: computes NNF(phi)</span>
+<span style="color: #408080; font-style: italic"> */</span>
+
+vertex<span style="color: #666666">*</span> <span style="color: #0000FF">DISTR</span>(vertex<span style="color: #666666">*</span> ch1, vertex<span style="color: #666666">*</span> ch2, vertex<span style="color: #666666">*</span> node);
+<span style="color: #408080; font-style: italic">/*Function that computes the Distribution of Formulas</span>
+<span style="color: #408080; font-style: italic">    *pre-condition: subformulas under ch1 and ch2 are CNF.</span>
+<span style="color: #408080; font-style: italic">    *post-condition: computes DISTR() recursively</span>
+<span style="color: #408080; font-style: italic"> */</span>
+
+<span style="color: #B00040">void</span> <span style="color: #0000FF">cnf_pre</span>(vertex<span style="color: #666666">*</span> node);
+<span style="color: #408080; font-style: italic">/* Function that calls impl_free() followed by nnf() which are the pre-conditions before calling cnf() method.</span>
+<span style="color: #408080; font-style: italic"> */</span>
+
+<span style="color: #B00040">int</span> <span style="color: #0000FF">validity</span>(<span style="color: #B00040">char</span><span style="color: #666666">*</span> phi_cnf);
+<span style="color: #408080; font-style: italic">/* Function to check if the given formula is valid or not.</span>
+<span style="color: #408080; font-style: italic"> * It takes one argument: the propositional logic formula in CNF form and returns &#39;0&#39; (not valid) OR &#39;1&#39; (valid)</span>
+<span style="color: #408080; font-style: italic"> */</span>
+
+<span style="color: #B00040">int</span> <span style="color: #0000FF">calculate_size</span>(vertex<span style="color: #666666">*</span> node);
+<span style="color: #408080; font-style: italic">/*Function to recursively compute the size of the parse Tree. It takes in one argument - the pointer the root node.</span>
+<span style="color: #408080; font-style: italic"> */</span>
+
+<span style="color: #B00040">void</span> <span style="color: #0000FF">compare_tree_sizes</span>();
+<span style="color: #408080; font-style: italic">/* Function to compare the sizes of the original propositional logic formula and the one in the CNF (Conjunctive Normal     Form)</span>
+<span style="color: #408080; font-style: italic"> */</span>
 </pre></td></tr></table></div>
-        <br/>
+
+        <br/><br/>
         <a href="code.html" class="link">Source Code</a>
 
         <h2 class="new"><u><i>ANALYSIS</i></u></h3>
@@ -215,6 +298,8 @@
             <li>parseTreeToInfix &nbsp;&nbsp;&nbsp;&nbsp;- <b>O(number of nodes in tree)</b></li>
             <li>computeHeight &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <b>O(number of nodes in tree)</b></li>
             <li>computeTruthValue - <b>O(number of nodes in tree)</b></li>
+            <li>validity     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<b>O(string length of (cnf form))</b></li>
+            <li>compare_tree_sizes - <b>O(string length of (cnf form)+ string length of (original form))</b></li>
         </ol>
         
         <p>
@@ -228,25 +313,28 @@
             Next, we used command line tool time which decribes us the statistics of elapsed time, execution time, user CPU time etc.
         </p>
         <p>
-            Next, we used Valgrind which checks for any memory leakage and heap usage. For example, here it clearly describes usage of 2592 bytes from heap and the confirmation that there is no memory leaks.
+            Next, we used Valgrind which checks for any memory leakage and heap usage. The Second and third images also includes the part of program used to compute CNF form.
         </p>
         
         <br/><br/>
         <div class="image">
-        <img src="img1.png" width="95%" align="middle">
+        <img src="images/img1.png" width="95%" align="middle">
         </div>
         
         <br/><br/>
-        
-        <p>
-            The following image is another instance of input running with the same tools as desribed previously.
-        </p>
+            
+        <div class="image">
+        <img src="images/img3.png" width="95%" align="middle">
+        </div>
         
         <br/><br/>
         
         <div class="image">
-        <img src="img2.png" width="95%">
+        <img src="images/img4.png" width="95%" align="middle">
         </div>
+        
+        <br/><br/>
+        
         <ul>
             <h3><li class="group"><u>Group Members</u></li></h3>
             <h4><li class="name">Ankit Anand   - 2015A7PS145H</li></h4>

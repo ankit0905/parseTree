@@ -5,7 +5,647 @@
         <title>Source Code</title>
     </head>
     <body>
-        <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #408080; font-style: italic">/* LOGIC IN COMPUTER SCIENCE - ASSIGNMENT 1 </span>
+        <!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #408080; font-style: italic">/* LOGIC IN COMPUTER SCIENCE - ASSIGNMENT </span>
 
 <span style="color: #408080; font-style: italic">Assumptions:</span>
 <span style="color: #408080; font-style: italic">-&gt;Input to the program is in infix notation and Well formed</span>
@@ -37,16 +677,21 @@
     <span style="color: #008000; font-weight: bold">struct</span> vertex<span style="color: #666666">*</span> parent;
 }vertex;
 
-<span style="color: #408080; font-style: italic">//The root of the Parse tree is initialized to NULL </span>
+<span style="color: #408080; font-style: italic">//The root of the Parse tree for original formula is initialized to NULL </span>
 vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
 
-<span style="color: #408080; font-style: italic">/*</span>
-<span style="color: #408080; font-style: italic">phi_prefix : input propositional logic formula in prefix form</span>
-<span style="color: #408080; font-style: italic">phi_infix : input propositional logic formula in infix form</span>
-<span style="color: #408080; font-style: italic">stack : data structure to store operators</span>
-<span style="color: #408080; font-style: italic">final_infix : fully parenthesized propositional     logic formula in infix form obtained from parse Tree</span>
+<span style="color: #408080; font-style: italic">//The root of the Parse tree for CNF formula initialized to NULL</span>
+vertex<span style="color: #666666">*</span> cnf_root<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+
+<span style="color: #408080; font-style: italic">/*  STRINGS USED TO REPRESENT FORMULAS</span>
+<span style="color: #408080; font-style: italic">==============================================================</span>
+<span style="color: #408080; font-style: italic">    phi_prefix : input propositional logic formula in prefix form</span>
+<span style="color: #408080; font-style: italic">    phi_infix : input propositional logic formula in infix form</span>
+<span style="color: #408080; font-style: italic">    stack : data structure to store operators</span>
+<span style="color: #408080; font-style: italic">    final_infix : fully parenthesized propositional logic formula in infix form obtained from parse Tree</span>
+<span style="color: #408080; font-style: italic">    phi_cnf : propositional logic formula in CNF form</span>
 <span style="color: #408080; font-style: italic">*/</span>
-<span style="color: #B00040">char</span> phi_prefix[MAX], phi_infix[MAX], stack[MAX], final_infix[MAX];
+<span style="color: #B00040">char</span> phi_prefix[MAX], phi_infix[MAX], stack[MAX], final_infix[MAX], phi_cnf[MAX];
 
 <span style="color: #408080; font-style: italic">//a variable that tracks the index of final_infix</span>
 <span style="color: #B00040">int</span> start<span style="color: #666666">=0</span>, truth_val[<span style="color: #666666">150</span>];
@@ -85,7 +730,7 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
         <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
 }
 
-<span style="color: #408080; font-style: italic">//TASK 1 : Function to convert propositional formula from infix notation to prefix notation</span>
+<span style="color: #408080; font-style: italic">//TASK 1.1 : Function to convert propositional formula from infix notation to prefix notation</span>
 <span style="color: #B00040">void</span> <span style="color: #0000FF">infixToPrefix</span>(<span style="color: #B00040">char</span> phi_infix[])
 {
     <span style="color: #B00040">int</span> i,top<span style="color: #666666">=-1</span>,curr<span style="color: #666666">=0</span>,len<span style="color: #666666">=</span>strlen(phi_infix);
@@ -146,20 +791,19 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
         <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
 }
 
-<span style="color: #408080; font-style: italic">//TASK 2: Function to convert prefix expression into a rooted binary parse tree</span>
-<span style="color: #B00040">void</span> <span style="color: #0000FF">prefixToParseTree</span>(<span style="color: #B00040">char</span> phi_prefix[])
+<span style="color: #408080; font-style: italic">//TASK 1.2: Function to convert prefix expression into a rooted binary parse tree</span>
+<span style="color: #B00040">void</span> <span style="color: #0000FF">prefixToParseTree</span>(vertex<span style="color: #666666">**</span> root, <span style="color: #B00040">char</span> phi_prefix[])
 {
     <span style="color: #B00040">int</span> i,len<span style="color: #666666">=</span>strlen(phi_prefix);
-    vertex<span style="color: #666666">*</span> curr<span style="color: #666666">=</span>root;
+    vertex<span style="color: #666666">*</span> curr<span style="color: #666666">=*</span>root;
     <span style="color: #008000; font-weight: bold">for</span>(i<span style="color: #666666">=0</span>; i<span style="color: #666666">&lt;</span>len; i<span style="color: #666666">++</span>){
         vertex<span style="color: #666666">*</span> tmp<span style="color: #666666">=</span>(vertex<span style="color: #666666">*</span>)malloc(<span style="color: #008000; font-weight: bold">sizeof</span>(vertex));
         tmp<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span>phi_prefix[i];
         tmp<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
         tmp<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
-        <span style="color: #408080; font-style: italic">//printf(&quot;%c\n&quot;,tmp-&gt;data);</span>
-        <span style="color: #008000; font-weight: bold">if</span>(root<span style="color: #666666">==</span><span style="color: #008000">NULL</span>){
+        <span style="color: #008000; font-weight: bold">if</span>(<span style="color: #666666">!*</span>root){
             tmp<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
-            root<span style="color: #666666">=</span>tmp;
+            <span style="color: #666666">*</span>root<span style="color: #666666">=</span>tmp;
             curr<span style="color: #666666">=</span>tmp;
         }
         <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span>(isOperand(phi_prefix[i])<span style="color: #666666">==1</span>){
@@ -175,9 +819,8 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
             }
             <span style="color: #008000; font-weight: bold">while</span>(<span style="color: #666666">1</span>){
                 curr<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>parent;
-                <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">==</span>root <span style="color: #666666">||</span> curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">==</span><span style="color: #008000">NULL</span>)
+                <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">==*</span>root <span style="color: #666666">||</span> curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">==</span><span style="color: #008000">NULL</span>)
                     <span style="color: #008000; font-weight: bold">break</span>;
-                <span style="color: #408080; font-style: italic">//printf(&quot;%c\n&quot;,tmp-&gt;data);</span>
             }
         }
         <span style="color: #008000; font-weight: bold">else</span>{
@@ -195,7 +838,7 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
     }
 }
 
-<span style="color: #408080; font-style: italic">/*TASK 3: Function to compute the propositional logic formula in infix notation using inorder traversal of the Parse tree */</span>
+<span style="color: #408080; font-style: italic">/*TASK 1.3: Function to compute the propositional logic formula in infix notation using inorder traversal of the Parse tree */</span>
 <span style="color: #B00040">void</span> <span style="color: #0000FF">parseTreeToInfix</span>(vertex<span style="color: #666666">*</span> node)
 {
     <span style="color: #008000; font-weight: bold">if</span>(node<span style="color: #666666">-&gt;</span>left<span style="color: #666666">!=</span><span style="color: #008000">NULL</span>){
@@ -205,6 +848,7 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
     <span style="color: #008000; font-weight: bold">if</span>(node<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;~&#39;</span>){
         final_infix[start<span style="color: #666666">++</span>]<span style="color: #666666">=</span><span style="color: #BA2121">&#39;(&#39;</span>;
     }
+    <span style="color: #408080; font-style: italic">//printf(&quot;%c&quot;,node-&gt;data);</span>
     final_infix[start<span style="color: #666666">++</span>]<span style="color: #666666">=</span>node<span style="color: #666666">-&gt;</span>data;
     <span style="color: #008000; font-weight: bold">if</span>(node<span style="color: #666666">-&gt;</span>right<span style="color: #666666">!=</span><span style="color: #008000">NULL</span>){
         parseTreeToInfix(node<span style="color: #666666">-&gt;</span>right);
@@ -212,7 +856,7 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
     }
 }
 
-<span style="color: #408080; font-style: italic">/*TASK 4: Function to Compute the height of the parse tree  by recursively computing height of each subtree*/</span>
+<span style="color: #408080; font-style: italic">/*TASK 1.4: Function to Compute the height of the parse tree  by recursively computing height of each subtree*/</span>
 <span style="color: #B00040">int</span> <span style="color: #0000FF">computeHeight</span>(vertex<span style="color: #666666">*</span> node) 
 {
    <span style="color: #008000; font-weight: bold">if</span> (node<span style="color: #666666">==</span><span style="color: #008000">NULL</span>) 
@@ -228,6 +872,7 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
    }
 } 
 
+<span style="color: #408080; font-style: italic">/* Function that takes user input for the truth values of all the propositional atoms. */</span>
 <span style="color: #B00040">void</span> <span style="color: #0000FF">inputTruthValue</span>()
 {
     <span style="color: #B00040">int</span> i,temp,len<span style="color: #666666">=</span>strlen(phi_prefix);
@@ -242,7 +887,7 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
     }
 }
 
-<span style="color: #408080; font-style: italic">/*TASK 5: Function to evaluate the truth value of the propositional logic formula by traversing in a bottom up manner*/</span>
+<span style="color: #408080; font-style: italic">/*TASK 1.5: Function to evaluate the truth value of the propositional logic formula by traversing in a bottom up manner*/</span>
 <span style="color: #B00040">int</span> <span style="color: #0000FF">computeTruthValue</span>(vertex<span style="color: #666666">*</span> node)
 {
     <span style="color: #008000; font-weight: bold">if</span>(isOperand(node<span style="color: #666666">-&gt;</span>data)){
@@ -292,14 +937,336 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
     free(node);
 }
 
+<span style="color: #408080; font-style: italic">/*Function to compute a formula which is without implication and is equivalent to phi*/</span>
+<span style="color: #B00040">void</span> <span style="color: #0000FF">impl_free</span>(vertex<span style="color: #666666">*</span> node)
+{
+    vertex <span style="color: #666666">*</span>curr<span style="color: #666666">=</span>node;
+    <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">==</span><span style="color: #008000">NULL</span>)
+        <span style="color: #008000; font-weight: bold">return</span>;
+    impl_free(curr<span style="color: #666666">-&gt;</span>left);
+    impl_free(curr<span style="color: #666666">-&gt;</span>right);
+    <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;&gt;&#39;</span>){
+        vertex<span style="color: #666666">*</span> tmp<span style="color: #666666">=</span>(vertex<span style="color: #666666">*</span>)malloc(<span style="color: #008000; font-weight: bold">sizeof</span>(vertex));
+        tmp<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;~&#39;</span>;
+        tmp<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+        tmp<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>left;
+        tmp<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span>curr;
+        curr<span style="color: #666666">-&gt;</span>left<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span>tmp;
+        curr<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>tmp;
+        curr<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;+&#39;</span>;
+    }
+}
+
+<span style="color: #408080; font-style: italic">/*Function which adds a node to the left child of the given node and contains &#39;~&#39; as its data element*/</span>
+<span style="color: #B00040">void</span> <span style="color: #0000FF">neg_at_left</span>(vertex <span style="color: #666666">*</span>ptr){
+        vertex<span style="color: #666666">*</span> temp;
+        temp <span style="color: #666666">=</span> (vertex <span style="color: #666666">*</span>)malloc(<span style="color: #008000; font-weight: bold">sizeof</span>(vertex));
+        temp<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;~&#39;</span>;
+        temp<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+        temp<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span>ptr;
+        temp<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>ptr<span style="color: #666666">-&gt;</span>left;
+        ptr<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>temp;
+        temp<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span>temp;
+}
+
+<span style="color: #408080; font-style: italic">/*Function which adds a node to the right child of the given node and contains &#39;~&#39; as its data element*/</span>
+
+<span style="color: #B00040">void</span> <span style="color: #0000FF">neg_at_right</span>(vertex <span style="color: #666666">*</span>ptr){
+        vertex<span style="color: #666666">*</span> temp;
+        temp <span style="color: #666666">=</span> (vertex <span style="color: #666666">*</span>)malloc(<span style="color: #008000; font-weight: bold">sizeof</span>(vertex));
+        temp<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;~&#39;</span>;
+        temp<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+        temp<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span>ptr;
+        temp<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>ptr<span style="color: #666666">-&gt;</span>right;
+        ptr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>temp;
+        temp<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span>temp;
+}
+
+<span style="color: #408080; font-style: italic">/* Function to compute a formula which only negates atoms - called as Negation Normal Form</span>
+<span style="color: #408080; font-style: italic">    </span>
+<span style="color: #408080; font-style: italic">pre-condition: phi is implication free</span>
+<span style="color: #408080; font-style: italic">post-condition: computes NNF(phi)</span>
+<span style="color: #408080; font-style: italic">*/</span>
+<span style="color: #B00040">void</span> <span style="color: #0000FF">nnf</span>(vertex<span style="color: #666666">*</span> node)
+{
+    vertex <span style="color: #666666">*</span>curr<span style="color: #666666">=</span>node;
+    <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">==</span><span style="color: #008000">NULL</span>)
+        <span style="color: #008000; font-weight: bold">return</span>;
+    <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;~&#39;</span>){
+        <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;~&#39;</span>){
+            <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">==</span><span style="color: #008000">NULL</span>){
+                curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+                cnf_root<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>right;
+                curr<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>right;
+                nnf(curr);
+            }
+            <span style="color: #008000; font-weight: bold">else</span>{
+                curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>parent;
+                <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">-&gt;</span>left<span style="color: #666666">==</span>curr){
+                    curr<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>right;
+                }
+                <span style="color: #008000; font-weight: bold">else</span>{
+                    curr<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>right;
+                }
+                curr<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>right;
+                nnf(curr);
+            }
+        }
+        <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;+&#39;</span> <span style="color: #666666">||</span> curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;*&#39;</span>){
+            <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">==</span><span style="color: #008000">NULL</span>){
+                neg_at_left(curr<span style="color: #666666">-&gt;</span>right);
+                neg_at_right(curr<span style="color: #666666">-&gt;</span>right);
+                curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+                cnf_root<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right;
+                curr<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right;
+                nnf(curr<span style="color: #666666">-&gt;</span>left);
+                nnf(curr<span style="color: #666666">-&gt;</span>right);
+                <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;+&#39;</span>){
+                    curr<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;*&#39;</span>;
+                }
+                <span style="color: #008000; font-weight: bold">else</span>{
+                    curr<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;+&#39;</span>;
+                }
+            }
+            <span style="color: #008000; font-weight: bold">else</span>{
+                neg_at_left(curr<span style="color: #666666">-&gt;</span>right);
+                neg_at_right(curr<span style="color: #666666">-&gt;</span>right);
+                curr<span style="color: #666666">-&gt;</span>right<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>parent;
+                <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">==</span>curr<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">-&gt;</span>right){
+                    curr<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right;
+                }
+                <span style="color: #008000; font-weight: bold">else</span>{
+                    curr<span style="color: #666666">-&gt;</span>parent<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right;
+                }
+                curr<span style="color: #666666">=</span>curr<span style="color: #666666">-&gt;</span>right;
+                nnf(curr<span style="color: #666666">-&gt;</span>left);
+                nnf(curr<span style="color: #666666">-&gt;</span>right);
+                <span style="color: #008000; font-weight: bold">if</span>(curr<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;+&#39;</span>){
+                    curr<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;*&#39;</span>;
+                }
+                <span style="color: #008000; font-weight: bold">else</span>{
+                    curr<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;+&#39;</span>;
+                }
+            }
+        }
+    }
+    <span style="color: #008000; font-weight: bold">else</span>{
+        nnf(curr<span style="color: #666666">-&gt;</span>left);
+        nnf(curr<span style="color: #666666">-&gt;</span>right);
+    }
+}
+
+<span style="color: #408080; font-style: italic">/*Function that computes the Distribution of Formulas</span>
+<span style="color: #408080; font-style: italic">    </span>
+<span style="color: #408080; font-style: italic">  pre-condition: subformulas under ch1 and ch2 are CNF.</span>
+<span style="color: #408080; font-style: italic">  post-condition: computes DISTR() recursively</span>
+<span style="color: #408080; font-style: italic">*/</span>
+vertex<span style="color: #666666">*</span> <span style="color: #0000FF">DISTR</span>(vertex<span style="color: #666666">*</span> ch1, vertex<span style="color: #666666">*</span> ch2, vertex<span style="color: #666666">*</span> node)
+{
+    <span style="color: #008000; font-weight: bold">if</span>(ch2<span style="color: #666666">!=</span><span style="color: #008000">NULL</span> <span style="color: #666666">&amp;&amp;</span> ch1<span style="color: #666666">!=</span><span style="color: #008000">NULL</span>)
+    {
+
+        <span style="color: #008000; font-weight: bold">if</span>(ch1<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;*&#39;</span>){
+            node<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;*&#39;</span>;
+            vertex <span style="color: #666666">*</span>temp1<span style="color: #666666">=</span>(vertex<span style="color: #666666">*</span>)malloc(<span style="color: #008000; font-weight: bold">sizeof</span>(vertex));
+            temp1<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+            temp1<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+            temp1<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;+&#39;</span>;
+            vertex <span style="color: #666666">*</span>temp2<span style="color: #666666">=</span>(vertex<span style="color: #666666">*</span>)malloc(<span style="color: #008000; font-weight: bold">sizeof</span>(vertex));
+            temp2<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+            temp2<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+            temp2<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;+&#39;</span>;
+            temp1<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>ch1<span style="color: #666666">-&gt;</span>left; temp1<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>ch2;
+            temp2<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>ch1<span style="color: #666666">-&gt;</span>right; temp2<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>ch2;
+            temp1<span style="color: #666666">=</span>DISTR(temp1<span style="color: #666666">-&gt;</span>left,temp1<span style="color: #666666">-&gt;</span>right,temp1);
+            temp2<span style="color: #666666">=</span>DISTR(temp2<span style="color: #666666">-&gt;</span>left,temp2<span style="color: #666666">-&gt;</span>right,temp2);
+            node<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>temp1;
+            node<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>temp2;
+            <span style="color: #008000; font-weight: bold">return</span> node;
+        }
+        <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span>(ch2<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;*&#39;</span>){
+            node<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;*&#39;</span>;
+            vertex <span style="color: #666666">*</span>temp1<span style="color: #666666">=</span>(vertex<span style="color: #666666">*</span>)malloc(<span style="color: #008000; font-weight: bold">sizeof</span>(vertex));
+            temp1<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+            temp1<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+            temp1<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;+&#39;</span>;
+            vertex <span style="color: #666666">*</span>temp2<span style="color: #666666">=</span>(vertex<span style="color: #666666">*</span>)malloc(<span style="color: #008000; font-weight: bold">sizeof</span>(vertex));
+            temp2<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+            temp2<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span><span style="color: #008000">NULL</span>;
+            temp2<span style="color: #666666">-&gt;</span>data<span style="color: #666666">=</span><span style="color: #BA2121">&#39;+&#39;</span>;
+            temp1<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>ch1; temp1<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>ch2<span style="color: #666666">-&gt;</span>left;
+            temp2<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>ch1; temp2<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>ch2<span style="color: #666666">-&gt;</span>right;
+            temp1<span style="color: #666666">=</span>DISTR(temp1<span style="color: #666666">-&gt;</span>left,temp1<span style="color: #666666">-&gt;</span>right,temp1);
+            temp2<span style="color: #666666">=</span>DISTR(temp2<span style="color: #666666">-&gt;</span>left,temp2<span style="color: #666666">-&gt;</span>right,temp2);
+            node<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>temp1;
+            node<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>temp2;
+            <span style="color: #008000; font-weight: bold">return</span> node;
+        }
+        <span style="color: #008000; font-weight: bold">else</span>{
+            <span style="color: #008000; font-weight: bold">return</span> node;
+        }
+    }   
+    <span style="color: #008000; font-weight: bold">else</span>
+    {
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">NULL</span>;
+    }
+}
+
+<span style="color: #408080; font-style: italic">/* Task 2.1: Function that computes the Conjunctive normal Form</span>
+<span style="color: #408080; font-style: italic">   </span>
+<span style="color: #408080; font-style: italic">   pre-condition: formula is implication free and in NNF</span>
+<span style="color: #408080; font-style: italic">   post-condition: computes CNF() recursively</span>
+<span style="color: #408080; font-style: italic">*/</span>
+vertex<span style="color: #666666">*</span> <span style="color: #0000FF">CNF</span>(vertex <span style="color: #666666">*</span>node)
+{
+    <span style="color: #008000; font-weight: bold">if</span>(node<span style="color: #666666">!=</span><span style="color: #008000">NULL</span>)
+    {
+        <span style="color: #008000; font-weight: bold">if</span>(node<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;*&#39;</span> <span style="color: #666666">||</span> node<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;+&#39;</span>){
+            node<span style="color: #666666">-&gt;</span>left<span style="color: #666666">=</span>CNF(node<span style="color: #666666">-&gt;</span>left);
+            node<span style="color: #666666">-&gt;</span>right<span style="color: #666666">=</span>CNF(node<span style="color: #666666">-&gt;</span>right);
+            <span style="color: #008000; font-weight: bold">if</span>(node<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;*&#39;</span>){
+                <span style="color: #008000; font-weight: bold">return</span> node;
+            }
+            <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span>(node<span style="color: #666666">-&gt;</span>data<span style="color: #666666">==</span><span style="color: #BA2121">&#39;+&#39;</span>){
+                <span style="color: #008000; font-weight: bold">return</span> DISTR(node<span style="color: #666666">-&gt;</span>left,node<span style="color: #666666">-&gt;</span>right,node);
+            }
+        }
+        <span style="color: #008000; font-weight: bold">else</span> { 
+            <span style="color: #008000; font-weight: bold">return</span> node; 
+        }
+    }
+    <span style="color: #008000; font-weight: bold">else</span>
+    {
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">NULL</span>;
+    }
+}
+
+<span style="color: #408080; font-style: italic">/* Function that calls impl_free() followed by nnf() which are the pre-conditions before calling cnf() method.</span>
+<span style="color: #408080; font-style: italic">*/</span>
+<span style="color: #B00040">void</span> <span style="color: #0000FF">cnf_pre</span>(vertex<span style="color: #666666">*</span> node)
+{
+    impl_free(cnf_root);
+    start<span style="color: #666666">=0</span>;
+    parseTreeToInfix(cnf_root);
+    printf(<span style="color: #BA2121">&quot;Implication Free Output is : %s</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>, final_infix);
+    final_infix[start]<span style="color: #666666">=</span><span style="color: #BA2121">&#39;\0&#39;</span>;
+    start<span style="color: #666666">=0</span>;
+    nnf(cnf_root);
+    parseTreeToInfix(cnf_root);
+    final_infix[start]<span style="color: #666666">=</span><span style="color: #BA2121">&#39;\0&#39;</span>;
+    printf(<span style="color: #BA2121">&quot;NNF Output is : %s</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>, final_infix);
+    start<span style="color: #666666">=0</span>;
+    CNF(cnf_root);
+    parseTreeToInfix(cnf_root);
+    final_infix[start]<span style="color: #666666">=</span><span style="color: #BA2121">&#39;\0&#39;</span>;
+    printf(<span style="color: #BA2121">&quot;CNF Output is : %s</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>, final_infix);
+    strcpy(phi_cnf,final_infix);
+}
+
+
+<span style="color: #408080; font-style: italic">/* TASK 2.2:  Function to check if the given formula is valid or not.</span>
+<span style="color: #408080; font-style: italic">   It takes one argument: the propositional logic formula in CNF form and returns &#39;0&#39; (not valid) OR &#39;1&#39; (valid)</span>
+<span style="color: #408080; font-style: italic">*/</span>
+<span style="color: #B00040">int</span> <span style="color: #0000FF">validity</span>(<span style="color: #B00040">char</span><span style="color: #666666">*</span> phi_cnf)
+{
+    <span style="color: #B00040">int</span> i,len <span style="color: #666666">=</span> strlen(phi_cnf);
+    <span style="color: #B00040">int</span> st[<span style="color: #666666">50</span>], en[<span style="color: #666666">50</span>], num_clauses<span style="color: #666666">=0</span>;
+    <span style="color: #008000; font-weight: bold">for</span>(i<span style="color: #666666">=0</span>; i<span style="color: #666666">&lt;50</span>; i<span style="color: #666666">++</span>){
+        st[i]<span style="color: #666666">=</span>en[i]<span style="color: #666666">=-1</span>;
+    }
+    st[<span style="color: #666666">0</span>]<span style="color: #666666">=0</span>, en[<span style="color: #666666">0</span>]<span style="color: #666666">=</span>len;
+    <span style="color: #008000; font-weight: bold">for</span>(i<span style="color: #666666">=0</span>; i<span style="color: #666666">&lt;</span>len; i<span style="color: #666666">++</span>){
+        <span style="color: #008000; font-weight: bold">if</span>(i<span style="color: #666666">==0</span>){
+            st[num_clauses]<span style="color: #666666">=</span>i;
+        }
+        <span style="color: #008000; font-weight: bold">else</span>{
+            <span style="color: #008000; font-weight: bold">if</span>(phi_cnf[i]<span style="color: #666666">==</span><span style="color: #BA2121">&#39;&amp;&#39;</span>){
+                en[num_clauses]<span style="color: #666666">=</span>i<span style="color: #666666">-1</span>;
+                num_clauses<span style="color: #666666">++</span>;
+                <span style="color: #008000; font-weight: bold">if</span>(phi_cnf[i<span style="color: #666666">+1</span>]<span style="color: #666666">==</span><span style="color: #BA2121">&#39;(&#39;</span>)
+                    st[num_clauses]<span style="color: #666666">=</span>i<span style="color: #666666">+1</span>;
+            }
+        }
+    }
+    en[num_clauses]<span style="color: #666666">=</span>len<span style="color: #666666">-1</span>;
+    <span style="color: #B00040">int</span> clause_idx<span style="color: #666666">=0</span>,neg<span style="color: #666666">=0</span>,truth_val;
+    <span style="color: #008000; font-weight: bold">while</span>(<span style="color: #666666">1</span>){
+        <span style="color: #008000; font-weight: bold">if</span>(en[clause_idx]<span style="color: #666666">==-1</span> <span style="color: #666666">&amp;&amp;</span> en[clause_idx]<span style="color: #666666">==-1</span>){
+            <span style="color: #008000; font-weight: bold">break</span>;
+        }
+        <span style="color: #B00040">int</span> atom[<span style="color: #666666">200</span>]<span style="color: #666666">=</span>{<span style="color: #666666">0</span>};
+        truth_val<span style="color: #666666">=0</span>,neg<span style="color: #666666">=0</span>;
+        <span style="color: #008000; font-weight: bold">for</span>(i<span style="color: #666666">=</span>st[clause_idx]; i<span style="color: #666666">&lt;=</span>en[clause_idx]; i<span style="color: #666666">++</span>){
+            <span style="color: #008000; font-weight: bold">if</span>(phi_cnf[i]<span style="color: #666666">==</span><span style="color: #BA2121">&#39;~&#39;</span>){
+                neg<span style="color: #666666">=1</span>;
+            }
+            <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span>(isOperand(phi_cnf[i])){
+                <span style="color: #008000; font-weight: bold">if</span>(neg<span style="color: #666666">==1</span> <span style="color: #666666">&amp;&amp;</span> atom[phi_cnf[i]]<span style="color: #666666">==0</span>){
+                    atom[phi_cnf[i]]<span style="color: #666666">=-1</span>;
+                }
+                <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span>(neg<span style="color: #666666">==1</span> <span style="color: #666666">&amp;&amp;</span> atom[phi_cnf[i]]<span style="color: #666666">==1</span>){
+                    truth_val<span style="color: #666666">=1</span>;
+                    <span style="color: #008000; font-weight: bold">break</span>;
+                }
+                <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span>(neg<span style="color: #666666">==0</span> <span style="color: #666666">&amp;&amp;</span> atom[phi_cnf[i]]<span style="color: #666666">==0</span>){
+                    atom[phi_cnf[i]]<span style="color: #666666">=1</span>;
+                }
+                <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span>(neg<span style="color: #666666">==0</span> <span style="color: #666666">&amp;&amp;</span> atom[phi_cnf[i]]<span style="color: #666666">==-1</span>){
+                    truth_val<span style="color: #666666">=1</span>;
+                    <span style="color: #008000; font-weight: bold">break</span>;
+                }
+                neg<span style="color: #666666">=0</span>;
+            }
+        }
+        <span style="color: #008000; font-weight: bold">if</span>(truth_val<span style="color: #666666">==0</span>){
+            <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
+        }
+        clause_idx<span style="color: #666666">++</span>;
+    }
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>;
+}
+
+<span style="color: #408080; font-style: italic">/*Function to recursively compute the size of the parse Tree. It takes in one argument - the pointer the root node.</span>
+<span style="color: #408080; font-style: italic">*/</span>
+<span style="color: #B00040">int</span> <span style="color: #0000FF">calculate_size</span>(vertex<span style="color: #666666">*</span> node)
+{
+    <span style="color: #008000; font-weight: bold">if</span>(node<span style="color: #666666">==</span><span style="color: #008000">NULL</span>){
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
+    }
+    <span style="color: #008000; font-weight: bold">else</span>{
+        <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1</span> <span style="color: #666666">+</span> calculate_size(node<span style="color: #666666">-&gt;</span>left) <span style="color: #666666">+</span> calculate_size(node<span style="color: #666666">-&gt;</span>right));
+    }
+}
+
+<span style="color: #408080; font-style: italic">/*TASK 2.3: Function to compare the sizes of the original propositional logic formula and the one in the CNF (Conjunctive Normal Form)</span>
+<span style="color: #408080; font-style: italic">*/</span>
+<span style="color: #B00040">void</span> <span style="color: #0000FF">compare_tree_sizes</span>()
+{
+    <span style="color: #B00040">int</span> sz1 <span style="color: #666666">=</span> calculate_size(root);
+    <span style="color: #B00040">int</span> sz2 <span style="color: #666666">=</span> calculate_size(cnf_root);
+    printf(<span style="color: #BA2121">&quot;Size Of Original Formula: %d</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&quot;</span>,sz1);
+    printf(<span style="color: #BA2121">&quot;Size Of Formula in CNF: %d</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&quot;</span>,sz2);
+    <span style="color: #008000; font-weight: bold">if</span>(sz1<span style="color: #666666">&gt;</span>sz2){
+        printf(<span style="color: #BA2121">&quot;Hence, Size of Original Formula is Greater.</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&quot;</span>);
+    }
+    <span style="color: #008000; font-weight: bold">else</span> <span style="color: #008000; font-weight: bold">if</span>(sz1<span style="color: #666666">&lt;</span>sz2){
+        printf(<span style="color: #BA2121">&quot;Hence, Size of Formula in CNF is Greater.</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>);
+    }
+    <span style="color: #008000; font-weight: bold">else</span>{
+        printf(<span style="color: #BA2121">&quot;Hence, Size of Original Formula and its CNF is equal.</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>);
+    }
+}
+
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
 {
     printf(<span style="color: #BA2121">&quot;Enter a propositional logic formula in infix notation (well-formed and fully parenthesized):</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&quot;</span>);
     scanf(<span style="color: #BA2121">&quot;%100s&quot;</span>, phi_infix);
     infixToPrefix(phi_infix);
     strrev(phi_prefix);
-    printf(<span style="color: #BA2121">&quot;Prefix form is : %s</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>,phi_prefix);
-    prefixToParseTree(phi_prefix);
+    printf(<span style="color: #BA2121">&quot;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">Prefix form is : %s</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>,phi_prefix);
+    prefixToParseTree(<span style="color: #666666">&amp;</span>root,phi_prefix);
+    prefixToParseTree(<span style="color: #666666">&amp;</span>cnf_root,phi_prefix);
+    vertex<span style="color: #666666">*</span> root2<span style="color: #666666">=</span>cnf_root;
     parseTreeToInfix(root);
     printf(<span style="color: #BA2121">&quot;Converted Infix form is : %s</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>, final_infix);
     <span style="color: #B00040">int</span> height<span style="color: #666666">=</span>computeHeight(root);
@@ -307,10 +1274,19 @@ vertex<span style="color: #666666">*</span> root<span style="color: #666666">=</
     inputTruthValue();
     <span style="color: #B00040">int</span> truthValue<span style="color: #666666">=</span>computeTruthValue(root);
     printf(<span style="color: #BA2121">&quot;Truth value is %d</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>,truthValue);
+    cnf_pre(cnf_root);
+    compare_tree_sizes();
+    <span style="color: #008000; font-weight: bold">if</span>(validity(final_infix)){
+        printf(<span style="color: #BA2121">&quot;The Formula is Valid</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>);
+    }
+    <span style="color: #008000; font-weight: bold">else</span>{
+        printf(<span style="color: #BA2121">&quot;The Formula is Invalid</span><span style="color: #BB6622; font-weight: bold">\n\n</span><span style="color: #BA2121">&quot;</span>);
+    }
     freeMemory(root);
+    freeMemory(cnf_root);
     <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
 }
-</pre></div>
+</pre></td></tr></table></div>
 
     </body>
 </html>

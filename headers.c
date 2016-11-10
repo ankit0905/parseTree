@@ -1,16 +1,3 @@
-+____________________________________________________+
-|                                                    |
-| Logic In Computer Science (CS F214) - Assignment I |
-|                                                    |
-| #PREFIX, INFIX AND PARSE TREE IMPLEMENTATION IN C  |
-|                                                    |
-| * Group Members -> Ankit Anand   (2015A7PS145H)    |
-|                 -> Bhavesh Gawri (2015A7PS116H)    |
-|                 -> Tilak Mundra  (2015A7PS121H)    |
-|                                                    |
-+____________________________________________________+
-
-    
 /*
 The basic structure used for the representation of a vertex of parse Tree.
 */
@@ -95,9 +82,43 @@ int isLowerPrecedence(char a, char b);
   * Takes in the pointer to parse Tree.
   * Frees the memory allocated using malloc for the parse Tree recursively.
   */
+    
+void impl_free(vertex* node);
+/*Function to compute a formula which is without implication and is equivalent to phi*/
 
+void neg_at_left(vertex *ptr);
+/*Function which adds a node to the left child of the given node and contains '~' as its data element
+ */
 
-ANALYSIS OF THE CODE : 
+void neg_at_right(vertex *ptr);
+/*Function which adds a node to the right child of the given node and contains '~' as its data element
+ */
 
+void nnf(vertex* node);
+/* Function to compute a formula which only negates atoms - called as Negation Normal Form    
+    *pre-condition: phi is implication free
+    *post-condition: computes NNF(phi)
+ */
 
+vertex* DISTR(vertex* ch1, vertex* ch2, vertex* node);
+/*Function that computes the Distribution of Formulas
+    *pre-condition: subformulas under ch1 and ch2 are CNF.
+    *post-condition: computes DISTR() recursively
+ */
 
+void cnf_pre(vertex* node);
+/* Function that calls impl_free() followed by nnf() which are the pre-conditions before calling cnf() method.
+ */
+
+int validity(char* phi_cnf);
+/* Function to check if the given formula is valid or not.
+ * It takes one argument: the propositional logic formula in CNF form and returns '0' (not valid) OR '1' (valid)
+ */
+
+int calculate_size(vertex* node);
+/*Function to recursively compute the size of the parse Tree. It takes in one argument - the pointer the root node.
+ */
+
+void compare_tree_sizes();
+/* Function to compare the sizes of the original propositional logic formula and the one in the CNF (Conjunctive Normal     Form)
+ */
